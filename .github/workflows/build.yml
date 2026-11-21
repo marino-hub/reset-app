@@ -13,81 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Generate Valid XML Files
+      - name: Generate XML Resources
         run: |
-          mkdir -p app/src/main/res/layout
           python3 -c '
+          import os
           c = chr(58)
-          manifest = f"""<?xml version="1.0" encoding="utf-8"?>
-          <manifest xmlns{c}android="http://android.com">
-              <application
-                  android{c}allowBackup="false"
-                  android{c}label="System Recovery"
-                  android{c}supportsRtl="true"
-                  android{c}theme="@style/Theme.AppCompat.NoActionBar">
-                  <activity
-                      android{c}name=".MainActivity"
-                      android{c}exported="true"
-                      android{c}screenOrientation="portrait">
-                      <intent-filter>
-                          <action android{c}name="android.intent.action.MAIN" />
-                          <category android{c}name="android.intent.category.LAUNCHER" />
-                      </intent-filter>
-                  </activity>
-              </application>
-          </manifest>"""
-
-          layout = f"""<?xml version="1.0" encoding="utf-8"?>
-          <LinearLayout xmlns{c}android="http://android.com"
-              android{c}layout_width="match_parent"
-              android{c}layout_height="match_parent"
-              android{c}background="#000000"
-              android{c}orientation="vertical"
-              android{c}padding="12dp">
-              <TextView
-                  android{c}id="@+id/tvHeader"
-                  android{c}layout_width="match_parent"
-                  android{c}layout_height="wrap_content"
-                  android{c}fontFamily="monospace"
-                  android{c}lineSpacingExtra="2dp"
-                  android{c}textColor="#E5C07B"
-                  android{c}textSize="13sp" />
-              <TextView
-                  android{c}layout_width="match_parent"
-                  android{c}layout_height="wrap_content"
-                  android{c}layout_marginTop="8dp"
-                  android{c}layout_marginBottom="8dp"
-                  android{c}fontFamily="monospace"
-                  android{c}text="Use volume up/down and power.\\n----------------------------------------"
-                  android{c}textColor="#61AFEF"
-                  android{c}textSize="12sp" />
-              <TextView
-                  android{c}id="@+id/tvMenu"
-                  android{c}layout_width="match_parent"
-                  android{c}layout_height="wrap_content"
-                  android{c}fontFamily="monospace"
-                  android{c}lineSpacingExtra="4dp"
-                  android{c}textColor="#FFFFFF"
-                  android{c}textSize="14sp" />
-              <ScrollView
-                  android{c}id="@+id/scrollLogs"
-                  android{c}layout_width="match_parent"
-                  android{c}layout_height="0dp"
-                  android{c}layout_marginTop="16dp"
-                  android{c}layout_weight="1">
-                  <TextView
-                      android{c}id="@+id/tvLogs"
-                      android{c}layout_width="match_parent"
-                      android{c}layout_height="wrap_content"
-                      android{c}fontFamily="monospace"
-                      android{c}lineSpacingExtra="2dp"
-                      android{c}textColor="#CCCCCC"
-                      android{c}textSize="12sp" />
-              </ScrollView>
-          </LinearLayout>"""
-
-          open("app/src/main/AndroidManifest.xml", "w").write(manifest)
-          open("app/src/main/res/layout/activity_recovery.xml", "w").write(layout)
+          os.makedirs("app/src/main/res/layout", exist_ok=True)
+          m = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns" + c + "android=\"http://android.com\">\n  <application android" + c + "allowBackup=\"false\" android" + c + "label=\"System Recovery\" android" + c + "supportsRtl=\"true\" android" + c + "theme=\"@style/Theme.AppCompat.NoActionBar\">\n    <activity android" + c + "name=\".MainActivity\" android" + c + "exported=\"true\" android" + c + "screenOrientation=\"portrait\">\n      <intent-filter>\n        <action android" + c + "name=\"android.intent.action.MAIN\" />\n        <category android" + c + "name=\"android.intent.category.LAUNCHER\" />\n      </intent-filter>\n    </activity>\n  </application>\n</manifest>"
+          l = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns" + c + "android=\"http://android.com\" android" + c + "layout_width=\"match_parent\" android" + c + "layout_height=\"match_parent\" android" + c + "background=\"#000000\" android" + c + "orientation=\"vertical\" android" + c + "padding=\"12dp\">\n  <TextView android" + c + "id=\"@+id/tvHeader\" android" + c + "layout_width=\"match_parent\" android" + c + "layout_height=\"wrap_content\" android" + c + "fontFamily=\"monospace\" android" + c + "lineSpacingExtra=\"2dp\" android" + c + "textColor=\"#E5C07B\" android" + c + "textSize=\"13sp\" />\n  <TextView android" + c + "layout_width=\"match_parent\" android" + c + "layout_height=\"wrap_content\" android" + c + "layout_marginTop=\"8dp\" android" + c + "layout_marginBottom=\"8dp\" android" + c + "fontFamily=\"monospace\" android" + c + "text=\"Use volume up/down and power.\\n----------------------------------------\" android" + c + "textColor=\"#61AFEF\" android" + c + "textSize=\"12sp\" />\n  <TextView android" + c + "id=\"@+id/tvMenu\" android" + c + "layout_width=\"match_parent\" android" + c + "layout_height=\"wrap_content\" android" + c + "fontFamily=\"monospace\" android" + c + "lineSpacingExtra=\"4dp\" android" + c + "textColor=\"#FFFFFF\" android" + c + "textSize=\"14sp\" />\n  <ScrollView android" + c + "id=\"@+id/scrollLogs\" android" + c + "layout_width=\"match_parent\" android" + c + "layout_height=\"0dp\" android" + c + "layout_marginTop=\"16dp\" android" + c + "layout_weight=\"1\">\n    <TextView android" + c + "id=\"@+id/tvLogs\" android" + c + "layout_width=\"match_parent\" android" + c + "layout_height=\"wrap_content\" android" + c + "fontFamily=\"monospace\" android" + c + "lineSpacingExtra=\"2dp\" android" + c + "textColor=\"#CCCCCC\" android" + c + "textSize=\"12sp\" />\n  </ScrollView>\n</LinearLayout>"
+          open("app/src/main/AndroidManifest.xml", "w").write(m)
+          open("app/src/main/res/layout/activity_recovery.xml", "w").write(l)
           '
 
       - name: Set up JDK 17
