@@ -15,7 +15,8 @@ jobs:
 
       - name: Fix Android XML Namespace
         run: |
-          sed -i -E 's/ (allowBackup|label|supportsRtl|theme|name|exported|screenOrientation|id|layout_width|layout_height|background|orientation|padding|fontFamily|lineSpacingExtra|textColor|textSize|layout_marginTop|layout_marginBottom|text|layout_weight)=/ android:\1=/g' app/src/main/AndroidManifest.xml app/src/main/res/layout/activity_recovery.xml
+          sed -i 's/xmlnsandroid=/xmlns:android=/g' app/src/main/AndroidManifest.xml app/src/main/res/layout/activity_recovery.xml
+          sed -i -E 's/android(allowBackup|label|supportsRtl|theme|name|exported|screenOrientation|id|layout_width|layout_height|background|orientation|padding|fontFamily|lineSpacingExtra|textColor|textSize|layout_marginTop|layout_marginBottom|text|layout_weight)=/android:\1=/g' app/src/main/AndroidManifest.xml app/src/main/res/layout/activity_recovery.xml
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
