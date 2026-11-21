@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
                 if (line.contains("/dev/block")) {
                     val parts = line.split(" ")
                     if (parts.size >= 2) {
-                        blocks.add("${parts} -> ${parts}")
+                        blocks.add("${parts[0]} -> ${parts[1]}")
                     }
                 }
             }
