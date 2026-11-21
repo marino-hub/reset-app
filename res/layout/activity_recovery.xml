@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://android.com"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- Encabezado real del sistema -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:textColor="#E5C07B"
+        android:textSize="13sp"
+        android:lineSpacingExtra="2dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="monospace"
+        android:text="Use volume up/down and power.\n----------------------------------------"
+        android:textColor="#61AFEF"
+        android:textSize="12sp" />
+
+    <!-- Opciones estilo menú Recovery -->
+    <TextView
+        android:id="@+id/tvMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:lineSpacingExtra="4dp" />
+
+    <!-- Consola de logs inferiores -->
+    <ScrollView
+        android:id="@+id/scrollLogs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tvLogs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="#CCCCCC"
+            android:textSize="12sp"
+            android:lineSpacingExtra="2dp" />
+    </ScrollView>
+
+</LinearLayout>
