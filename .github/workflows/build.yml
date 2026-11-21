@@ -13,16 +13,81 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Restore Valid XML Files
+      - name: Generate Valid XML Files
         run: |
           mkdir -p app/src/main/res/layout
-          echo "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPG1hbmlmZXN0IHhtbG5zOmFuZHJvaWQ9Imh0dHA6Ly9zY2hlbWFzLmFuZHJvaWQuY29tL2Fway9yZXMvYW5kcm9pZCI+CiAgICA8YXBwbGljYXRpb24KICAgICAgICBhbmRyb2lkOmFsbG93QmFja3VwPSJmYWxzZSIKICAgICAgICBhbmRyb2lkOmxhYmVsPSJTeXN0ZW0gUmVjb3ZlcnkiCiAgICAgICAgYW5kcm9pZDpzdXBwb3J0c1J0bD0idHJ1ZSIKICAgICAgICBhbmRyb2lkOnRoZW1lPSJAc3R5bGUvVGhlbWUuQXBwQ29tcGF0Lk5vQWN0aW9uQmFyIj4KICAgICAgICA8YWN0aXZpdHkKICAgICAgICAgICAgYW5kcm9pZDpuYW1lPSIuTWFpbkFjdGl2aXR5IgogICAgICAgICAgICBhbmRyb2lkOmV4cG9ydGVkPSJ0cnVlIgogICAgICAgICAgICBhbmRyb2lkOnNjcmVlbk9yaWVudGF0aW9uPSJwb3J0cmFpdCI+CiAgICAgICAgICAgIDxpbnRlbnQtZmlsdGVyPgogICAgICAgICAgICAgICAgPGFjdGlvbiBhbmRyb2lkOm5hbWU9ImFuZHJvaWQuaW50ZW50LmFjdGlvbi5NQUlOIiAvPgogICAgICAgICAgICAgICAgPG category android:name="android.intent.category.LAUNCHER" />" > /dev/null
           python3 -c '
-          import base64
-          m = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPG1hbmlmZXN0IHhtbG5zOmFuZHJvaWQ9Imh0dHA6Ly9zY2hlbWFzLmFuZHJvaWQuY29tL2Fway9yZXMvYW5kcm9pZCI+CiAgICA8YXBwbGljYXRpb24KICAgICAgICBhbmRyb2lkOmFsbG93QmFja3VwPSJmYWxzZSIKICAgICAgICBhbmRyb2lkOmxhYmVsPSJTeXN0ZW0gUmVjb3ZlcnkiCiAgICAgICAgYW5kcm9pZDpzdXBwb3J0c1J0bD0idHJ1ZSIKICAgICAgICBhbmRyb2lkOnRoZW1lPSJAc3R5bGUvVGhlbWUuQXBwQ29tcGF0Lk5vQWN0aW9uQmFyIj4KICAgICAgICA8YWN0aXZpdHkKICAgICAgICAgICAgYW5kcm9pZDpuYW1lPSIuTWFpbkFjdGl2aXR5IgogICAgICAgICAgICAgYW5kcm9pZDpleHBvcnRlZD0idHJ1ZSIKICAgICAgICAgICAgYW5kcm9pZDpzY3JlZW5PcmllbnRhdGlvbj0icG9ydHJhaXQiPgogICAgICAgICAgICA8aW50ZW50LWZpbHRlcj4KICAgICAgICAgICAgICAgIDxhY3Rpb24gYW5kcm9pZDpuYW1lPSJhbmRyb2lkLmludGVudC5hY3Rpb24uTUFJTiIgLz4KICAgICAgICAgICAgICAgIDxjYXRlZ29yeSBhbmRyb2lkOm5hbWU9ImFuZHJvaWQuaW50ZW50LmNhdGVnb3J5LkxBVU5DSEVSIiAvPgogICAgICAgICAgICA8L2ludGVudC1maWx0ZXI+CiAgICAgICAgPC9hY3Rpdml0eT4KICAgIDwvYXBwbGljYXRpb24+CjwvbWFuaWZlc3Q+"
-          l = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPExpbmVhckxheW91dCB4bWxuczphbmRyb2lkPSJodHRwOi8vc2NoZW1hcy5hbmRyb2lkLmNvbS9hcGsvcmVzL2FuZHJvaWQiCiAgICBhbmRyb2lkOmxheW91dF93aWR0aD0ibWF0Y2hfcGFyZW50IgogICAgYW5kcm9pZDpsYXlvdXRfaGVpZ2h0PSJtYXRjaF9wYXJlbnQiCiAgICBhbmRyb2lkOmJhY2tncm91bmQ9IiMwMDAwMDAiCiAgICBhbmRyb2lkOm9yaWVudGF0aW9uPSJ2ZXJ0aWNhbCIKICAgIGFuZHJvaWQ6cGFkZGluZz0iMTJkcCI+CiAgICA8VGV4dFZpZXcKICAgICAgICBhbmRyb2lkOmlkPSJAditpZC90dkhlYWRlciIKICAgICAgICBhbmRyb2lkOmxheW91dF93aWR0aD0ibWF0Y2hfcGFyZW50IgogICAgICAgIGFuZHJvaWQ6bGF5b3V0X2hlaWdodD0id3JhcF9jb250ZW50IgogICAgICAgIGFuZHJvaWQ6Zm9udEZhbWlseT0ibW9ub3NwYWNlIgogICAgICAgIGFuZHJvaWQ6bGluZVNwYWNpbmdFeHRyYT0iMmRwIgogICAgICAgIGFuZHJvaWQ6dGV4dENvbG9yPSIjRTVDMDdCIgogICAgICAgIGFuZHJvaWQ6dGV4dFNpemU9IjEzc3AiIC8+CiAgICA8VGV4dFZpZXcKICAgICAgICBhbmRyb2lkOmxheW91dF93aWR0aD0ibWF0Y2hfcGFyZW50IgogICAgICAgIGFuZHJvaWQ6bGF5b3V0X2hlaWdodD0id3JhcF9jb250ZW50IgogICAgICAgIGFuZHJvaWQ6bGF5b3V0X21hcmdpblRvcD0iOGRwIgogICAgICAgIGFuZHJvaWQ6bGF5b3V0X21hcmdpbkJvdHRvbT0iOGRwIgogICAgICAgIGFuZHJvaWQ6Zm9udEZhbWlseT0ibW9ub3NwYWNlIgogICAgICAgIGFuZHJvaWQ6dGV4dD0iVXNlIHZvbHVtZSB1cC9kb3duIGFuZCBwb3dlci5cbi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0iCiAgICAgICAgYW5kcm9pZDp0ZXh0Q29sb3I9IiM2MUFGRUYAIgogICAgICAgIGFuZHJvaWQ6dGV4dFNpemU9IjEyc3AiIC8+CiAgICA8VGV4dFZpZXcKICAgICAgICBhbmRyb2lkOmlkPSJAditpZC90dk1lbnUiCiAgICAgICAgYW5kcm9pZDpsYXlvdXRfd2lkdGg9Im1hdGNoX3BhcmVudCIKICAgICAgICBhbmRyb2lkOmxheW91dF9oZWlnaHQ9IndyYXBfY29udGVudCIKICAgICAgICBhbmRyb2lkOmZvbnRGYW1pbHk9Im1vbm9zcGFjZSIKICAgICAgICBhbmRyb2lkOmxpbmVTcGFjaW5nRXh0cmE9IjRkcCIKICAgICAgICBhbmRyb2lkOnRleHRDb2xvcj0iI0ZGRkZGRiIKICAgICAgICBhbmRyb2lkOnRleHRTaXplPSIxNHNwIiAvPgogICAgPFNjcm9sbFZpZXcKICAgICAgICBhbmRyb2lkOmlkPSJAditpZC9zY3JvbGxMb2dzIgogICAgICAgIGFuZHJvaWQ6bGF5b3V0X3dpZHRoPSJtYXRjaF9wYXJlbnQiCiAgICAgICAgYW5kcm9pZDpsYXlvdXRfaGVpZ2h0PSIwZHAiCiAgICAgICAgYW5kcm9pZDpsYXlvdXRfbWFyZ2luVG9wPSIxNmRwIgogICAgICAgIGFuZHJvaWQ6bGF5b3V0X3dlaWdodD0iMSI+CiAgICAgICAgPFRleHRWaWV3CiAgICAgICAgICAgIGFuZHJvaWQ6aWQ9IkArYWlkL3R2TG9ncyIKICAgICAgICAgICAgYW5kcm9pZDpsYXlvdXRfd2lkdGg9Im1hdGNoX3BhcmVudCIKICAgICAgICAgICAgYW5kcm9pZDpsYXlvdXRfaGVpZ2h0PSJ3cmFwX2NvbnRlbnQiCiAgICAgICAgICAgIGFuZHJvaWQ6Zm9udEZhbWlseT0ibW9ub3NwYWNlIgogICAgICAgICAgICBhbmRyb2lkOmxpbmVTcGFjaW5nRXh0cmE9IjJkcCIKICAgICAgICAgICAgYW5kcm9pZDp0ZXh0Q29sb3I9IiNDQ0NDQ0MiCiAgICAgICAgICAgIGFuZHJvaWQ6dGV4dFNpemU9IjEyc3AiIC8+CiAgICA8L1Njcm9sbFZpZXc+CjwvTGluZWFyTGF5b3V0Pg=="
-          open("app/src/main/AndroidManifest.xml", "wb").write(base64.b64decode(m))
-          open("app/src/main/res/layout/activity_recovery.xml", "wb").write(base64.b64decode(l))
+          c = chr(58)
+          manifest = f"""<?xml version="1.0" encoding="utf-8"?>
+          <manifest xmlns{c}android="http://android.com">
+              <application
+                  android{c}allowBackup="false"
+                  android{c}label="System Recovery"
+                  android{c}supportsRtl="true"
+                  android{c}theme="@style/Theme.AppCompat.NoActionBar">
+                  <activity
+                      android{c}name=".MainActivity"
+                      android{c}exported="true"
+                      android{c}screenOrientation="portrait">
+                      <intent-filter>
+                          <action android{c}name="android.intent.action.MAIN" />
+                          <category android{c}name="android.intent.category.LAUNCHER" />
+                      </intent-filter>
+                  </activity>
+              </application>
+          </manifest>"""
+
+          layout = f"""<?xml version="1.0" encoding="utf-8"?>
+          <LinearLayout xmlns{c}android="http://android.com"
+              android{c}layout_width="match_parent"
+              android{c}layout_height="match_parent"
+              android{c}background="#000000"
+              android{c}orientation="vertical"
+              android{c}padding="12dp">
+              <TextView
+                  android{c}id="@+id/tvHeader"
+                  android{c}layout_width="match_parent"
+                  android{c}layout_height="wrap_content"
+                  android{c}fontFamily="monospace"
+                  android{c}lineSpacingExtra="2dp"
+                  android{c}textColor="#E5C07B"
+                  android{c}textSize="13sp" />
+              <TextView
+                  android{c}layout_width="match_parent"
+                  android{c}layout_height="wrap_content"
+                  android{c}layout_marginTop="8dp"
+                  android{c}layout_marginBottom="8dp"
+                  android{c}fontFamily="monospace"
+                  android{c}text="Use volume up/down and power.\\n----------------------------------------"
+                  android{c}textColor="#61AFEF"
+                  android{c}textSize="12sp" />
+              <TextView
+                  android{c}id="@+id/tvMenu"
+                  android{c}layout_width="match_parent"
+                  android{c}layout_height="wrap_content"
+                  android{c}fontFamily="monospace"
+                  android{c}lineSpacingExtra="4dp"
+                  android{c}textColor="#FFFFFF"
+                  android{c}textSize="14sp" />
+              <ScrollView
+                  android{c}id="@+id/scrollLogs"
+                  android{c}layout_width="match_parent"
+                  android{c}layout_height="0dp"
+                  android{c}layout_marginTop="16dp"
+                  android{c}layout_weight="1">
+                  <TextView
+                      android{c}id="@+id/tvLogs"
+                      android{c}layout_width="match_parent"
+                      android{c}layout_height="wrap_content"
+                      android{c}fontFamily="monospace"
+                      android{c}lineSpacingExtra="2dp"
+                      android{c}textColor="#CCCCCC"
+                      android{c}textSize="12sp" />
+              </ScrollView>
+          </LinearLayout>"""
+
+          open("app/src/main/AndroidManifest.xml", "w").write(manifest)
+          open("app/src/main/res/layout/activity_recovery.xml", "w").write(layout)
           '
 
       - name: Set up JDK 17
