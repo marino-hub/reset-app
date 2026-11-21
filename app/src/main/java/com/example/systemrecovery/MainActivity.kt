@@ -53,14 +53,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadRealDeviceInfo() {
-        val headerText = """
-            Android Recovery
-            ${Build.BRAND}/${Build.PRODUCT}/${Build.DEVICE}
-            ${Build.VERSION.RELEASE}/${Build.ID}/${Build.VERSION.INCREMENTAL}
-            user/release-keys
-            Bootloader: ${Build.BOOTLOADER}
-            Security Patch: ${Build.VERSION.SECURITY_PATCH}
-        """.trimIndent()
+        val headerText = "Android Recovery\n" +
+            "${Build.BRAND}/${Build.PRODUCT}/${Build.DEVICE}\n" +
+            "${Build.VERSION.RELEASE}/${Build.ID}/${Build.VERSION.INCREMENTAL}\n" +
+            "user/release-keys\n" +
+            "Bootloader: ${Build.BOOTLOADER}\n" +
+            "Security Patch: ${Build.VERSION.SECURITY_PATCH}"
         tvHeader.text = headerText
     }
 
@@ -104,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                 if (line.contains("/dev/block")) {
                     val parts = line.split(" ")
                     if (parts.size >= 2) {
-                        blocks.add("${parts[0]} -> ${parts[1]}")
+                        blocks.add(parts[0] + " -> " + parts[1])
                     }
                 }
             }
